@@ -13,20 +13,46 @@ export const urlFor = (source: any) => builder.image(source);
 // GROQ queries
 
 export const queries = {
-  // 🛍 All Products
-  products: `*[_type == "product"] | order(_createdAt desc){
+  // 🛍 All Products (with pagination support)
+  products: (
+    start = 0,
+    end = 20,
+  ) => `*[_type == "product"] | order(_createdAt desc) [${start}...${end}]{
     _id,
     name,
     slug,
-    image,
-    images,
+    image {
+      asset->,
+      alt
+    },
+    images[]{
+      asset->,
+      alt
+    },
     description,
     price,
     stock,
     roastLevel,
     origin,
     featured,
-    seo,
+    tags,
+    specifications,
+    seo {
+      metaTitle,
+      metaDescription,
+      metaImage {
+        asset->,
+        alt
+      },
+      openGraph {
+        ogTitle,
+        ogDescription,
+        ogImage {
+          asset->,
+          alt
+        }
+      }
+    },
     "category": category->{
       _id,
       name,
@@ -35,19 +61,43 @@ export const queries = {
   }`,
 
   // 🛍 Featured Products
-  featuredProducts: `*[_type == "product" && featured == true]{
+  featuredProducts: `*[_type == "product" && featured == true] | order(_createdAt desc){
     _id,
     name,
     slug,
-    image,
-    images,
+    image {
+      asset->,
+      alt
+    },
+    images[]{
+      asset->,
+      alt
+    },
     description,
     price,
     stock,
+      inStock,
     roastLevel,
     origin,
     featured,
-    seo,
+    tags,
+    specifications,
+    seo {
+      metaTitle,
+      metaDescription,
+      metaImage {
+        asset->,
+        alt
+      },
+      openGraph {
+        ogTitle,
+        ogDescription,
+        ogImage {
+          asset->,
+          alt
+        }
+      }
+    },
     "category": category->{
       _id,
       name,
@@ -62,15 +112,45 @@ export const queries = {
     _id,
     name,
     slug,
-    image,
-    images,
+    image {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    images[] {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
     description,
     price,
     stock,
+    inStock,
     roastLevel,
     origin,
     featured,
-    seo,
+    tags,
+    specifications,
+    seo {
+      metaTitle,
+      metaDescription,
+      metaImage {
+        asset->,
+        alt
+      },
+      openGraph {
+        ogTitle,
+        ogDescription,
+        ogImage {
+          asset->,
+          alt
+        }
+      }
+    },
     "category": category->{
       _id,
       name,
@@ -81,19 +161,94 @@ export const queries = {
   // 🛍 Products by Category Slug
   productsByCategory: (
     categorySlug: string,
-  ) => `*[_type == "product" && category->slug.current == "${categorySlug}"]{
+    start = 0,
+    end = 20,
+  ) => `*[_type == "product" && category->slug.current == "${categorySlug}"] | order(_createdAt desc) [${start}...${end}]{
     _id,
     name,
     slug,
-    image,
-    images,
+    image {
+      asset->,
+      alt
+    },
+    images[]{
+      asset->,
+      alt
+    },
     description,
     price,
     stock,
+      inStock,
     roastLevel,
     origin,
     featured,
-    seo,
+    tags,
+    specifications,
+    seo {
+      metaTitle,
+      metaDescription,
+      metaImage {
+        asset->,
+        alt
+      },
+      openGraph {
+        ogTitle,
+        ogDescription,
+        ogImage {
+          asset->,
+          alt
+        }
+      }
+    },
+    "category": category->{
+      _id,
+      name,
+      slug
+    }
+  }`,
+
+  // 🏷️ Products by Tag
+  productsByTag: (
+    tag: string,
+    start = 0,
+    end = 20,
+  ) => `*[_type == "product" && "${tag}" in tags] | order(_createdAt desc) [${start}...${end}]{
+    _id,
+    name,
+    slug,
+    image {
+      asset->,
+      alt
+    },
+    images[]{
+      asset->,
+      alt
+    },
+    description,
+    price,
+    stock,
+      inStock,
+    roastLevel,
+    origin,
+    featured,
+    tags,
+    specifications,
+    seo {
+      metaTitle,
+      metaDescription,
+      metaImage {
+        asset->,
+        alt
+      },
+      openGraph {
+        ogTitle,
+        ogDescription,
+        ogImage {
+          asset->,
+          alt
+        }
+      }
+    },
     "category": category->{
       _id,
       name,
@@ -146,7 +301,10 @@ export const queries = {
     "author": author->{
       name,
       slug,
-      image,
+      image {
+        asset->,
+        alt
+      },
       bio
     }
   }`,
@@ -158,7 +316,10 @@ export const queries = {
     _id,
     name,
     slug,
-    image,
+    image {
+      asset->,
+      alt
+    },
     bio
   }`,
 
