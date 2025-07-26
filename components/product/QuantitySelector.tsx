@@ -48,7 +48,7 @@ export default function QuantitySelector({
       </div>
       <Button
         size="lg"
-        className="w-full bg-coffee-green hover:bg-coffee-green/90"
+        className="w-full bg-primary hover:bg-primary/90"
         disabled={disabled}
         onClick={onAddToCart}
       >
