@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Shield, Users, Globe, Award } from "lucide-react";
 import coffeeBeansImage from "@/assets/coffee-beans.jpg";
 import coffeeHandsImage from "@/assets/coffee-hands.jpg";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -29,12 +30,14 @@ const About = () => {
               ensuring that each bean is a perfect representation of the unique
               Kenyan terroir.
             </p>
-            <Button
-              size="lg"
-              className="bg-coffee-green hover:bg-coffee-green/90 shadow-medium"
-            >
-              Learn More About Us
-            </Button>
+            <Link href="/about">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 shadow-medium"
+              >
+                Learn More About Us
+              </Button>
+            </Link>
           </div>
 
           <div className="relative w-full h-72 sm:h-96 lg:h-[480px] rounded-lg overflow-hidden">
@@ -96,7 +99,7 @@ const About = () => {
               className="text-center p-6 shadow-soft hover:shadow-medium transition-shadow duration-300"
             >
               <CardContent className="p-0">
-                <div className="w-16 h-16 bg-coffee-green rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon className="h-8 w-8 text-white" />
                 </div>
                 <h4 className="font-semibold text-xl mb-3 text-primary">
@@ -126,13 +129,15 @@ const About = () => {
                 <p className="text-xl mb-6 text-coffee-cream">
                   Join our global network of satisfied customers
                 </p>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-black"
-                >
-                  Get In Touch
-                </Button>
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-primary border-white text-white hover:bg-white hover:text-black"
+                  >
+                    Get In Touch
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
