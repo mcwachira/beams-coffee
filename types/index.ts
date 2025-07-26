@@ -1,0 +1,149 @@
+// ✅ Shared
+export interface SanityImage {
+  _type: "image";
+  asset: {
+    _ref: string;
+    _type: "reference";
+  };
+  alt?: string;
+}
+
+export interface Slug {
+  _type: "slug";
+  current: string;
+}
+
+// ✅ Portable Text
+export type BlockContent = Array<Block | ImageBlock>;
+
+export interface Block {
+  _key: string;
+  _type: "block";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  listItem?: "bullet";
+  children: Span[];
+  markDefs: LinkAnnotation[];
+}
+
+export interface Span {
+  _key: string;
+  _type: "span";
+  text: string;
+  marks: string[];
+}
+
+export interface LinkAnnotation {
+  _key: string;
+  _type: "link";
+  href: string;
+}
+
+export interface ImageBlock {
+  _key: string;
+  _type: "image";
+  asset: {
+    _type: "reference";
+    _ref: string;
+  };
+  alt?: string;
+}
+
+// ✅ Blog
+export interface BlogPost {
+  _id: string;
+  _type: "blogPost";
+  title: string;
+  slug: Slug;
+  author: {
+    _type: "reference";
+    _ref: string;
+  };
+  publishedAt?: string;
+  mainImage?: SanityImage;
+  excerpt?: string;
+  content?: BlockContent;
+  tags?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
+  ogImage?: SanityImage;
+}
+
+export interface Author {
+  _id: string;
+  _type: "author";
+  name: string;
+  slug?: Slug;
+  image?: SanityImage;
+  bio?: BlockContent;
+}
+
+// ✅ Category
+export interface Category {
+  _id: string;
+  _type: "category";
+  name: string;
+  slug: Slug;
+  description?: string;
+}
+
+// ✅ Gallery
+export interface Gallery {
+  _type: "gallery";
+  images: GalleryImage[];
+}
+
+export interface GalleryImage extends SanityImage {
+  _key?: string;
+  alt: string; // required alt per schema
+}
+
+// ✅ Product
+export interface Product {
+  _id: string;
+  _type: "product";
+  name: string;
+  slug: Slug;
+  image: SanityImage;
+  images: SanityImage[];
+  description?: string;
+  price?: number;
+  category?: {
+    _type: "reference";
+    _ref: string;
+  };
+  stock?: number;
+  roastLevel?: "Light" | "Medium" | "Dark";
+  origin?: string;
+  featured?: boolean;
+  seo?: {
+    title?: string;
+    description?: string;
+  };
+}
+
+// ✅ Cart
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+// ✅ User
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  image?: string;
+}
+
+// ✅ Review
+export interface Review {
+  _id: string;
+  product: {
+    _type: "reference";
+    _ref: string;
+  };
+  user: User;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}
