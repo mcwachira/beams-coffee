@@ -93,7 +93,7 @@ export const product = defineType({
     prepare({ title, media, price }) {
       return {
         title,
-        subtitle: price != null ? `$${price}` : "No price"
+        subtitle: price != null ? `$${price}` : "No price",
         media,
       };
     },
