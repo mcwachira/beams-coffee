@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-// import { useCart } from "@/contexts/CartContext";
+import { useCart } from "@/contexts/CartContext";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -21,7 +21,7 @@ const navItems = [
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  // const { itemCount } = useCart();
+  const { itemCount } = useCart();
   const { theme, setTheme } = useTheme();
 
   const isActive = (path: string) =>
@@ -60,11 +60,11 @@ const Navigation = () => {
             <Link href="/cart" className="relative">
               <Button variant="outline" size="sm">
                 <ShoppingCart className="h-4 w-4" />
-                {/* {itemCount > 0 && (
+                {itemCount > 0 && (
                   <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 text-xs bg-coffee-green">
-                     {itemCount}
+                    {itemCount}
                   </Badge>
-                )} */}
+                )}
 
                 <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 text-xs bg-coffee-green">
                   1
@@ -132,10 +132,9 @@ const Navigation = () => {
                 <Button variant="outline" className="w-full relative mt-2">
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   Cart
-                  {/* {itemCount > 0 && (
+                  {itemCount > 0 && (
                     <Badge className="ml-2 bg-coffee-green">{itemCount}</Badge>
-                  )} */}
-                  <Badge className="ml-2 bg-coffee-green">1</Badge>
+                  )}
                 </Button>
               </Link>
             </div>
