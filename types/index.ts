@@ -53,21 +53,46 @@ export interface ImageBlock {
 // ✅ Blog
 export interface BlogPost {
   _id: string;
-  _type: "blogPost";
+  _type?: "blogPost";
   title: string;
-  slug: Slug;
-  author: {
-    _type: "reference";
-    _ref: string;
-  };
-  publishedAt?: string;
-  mainImage?: SanityImage;
+  slug: { current: string };
   excerpt?: string;
-  content?: BlockContent;
+  publishedAt?: string;
+  mainImage?: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+    alt?: string;
+  };
+  categories?: {
+    _id: string;
+    title: string;
+    slug: { current: string };
+  }[];
   tags?: string[];
   metaTitle?: string;
   metaDescription?: string;
-  ogImage?: SanityImage;
+  ogImage?: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+    alt?: string;
+  };
+  content?: any; // You can replace `any` with PortableText type if needed
+  author: {
+    name: string;
+    slug: { current: string };
+    image?: {
+      asset: {
+        _id: string;
+        url: string;
+      };
+      alt?: string;
+    };
+    bio?: any; // Replace with a PortableText type if needed
+  };
 }
 
 export interface Author {

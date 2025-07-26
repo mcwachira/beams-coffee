@@ -19,6 +19,12 @@ export const blogPost = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "category" }] }],
+    }),
+    defineField({
       name: "author",
       title: "Author",
       type: "reference",

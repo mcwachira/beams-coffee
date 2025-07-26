@@ -277,15 +277,38 @@ export const queries = {
     slug,
     excerpt,
     publishedAt,
-    mainImage,
+    mainImage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    "categories": categories[]->{
+        _id,
+        title,
+        slug
+      },
     tags,
     metaTitle,
     metaDescription,
-    ogImage,
+    ogImage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
     "author": author->{
       name,
       slug,
-      image
+      image {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
     }
   }`,
 
@@ -298,17 +321,37 @@ export const queries = {
     slug,
     excerpt,
     publishedAt,
-    mainImage,
+    mainImage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    "categories": categories[]->{
+        _id,
+        title,
+        slug
+      },
     tags,
     metaTitle,
     metaDescription,
-    ogImage,
+    ogImage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
     content,
     "author": author->{
       name,
       slug,
       image {
-        asset->,
+        asset->{
+          _id,
+          url
+        },
         alt
       },
       bio
