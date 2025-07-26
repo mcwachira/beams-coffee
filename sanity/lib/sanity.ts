@@ -22,11 +22,17 @@ export const queries = {
     name,
     slug,
     image {
-      asset->,
+      asset->{
+        _id,
+        url
+      },
       alt
     },
     images[]{
-      asset->,
+    asset->{
+      _id,
+      url
+    },
       alt
     },
     description,

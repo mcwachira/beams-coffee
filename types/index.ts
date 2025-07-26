@@ -2,8 +2,10 @@
 export interface SanityImage {
   _type: "image";
   asset: {
-    _ref: string;
-    _type: "reference";
+    _id?: string;
+    url?: string;
+    _type?: "reference" | "sanity.imageAsset";
+    _ref?: string;
   };
   alt?: string;
 }
