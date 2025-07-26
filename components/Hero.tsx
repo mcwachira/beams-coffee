@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Coffee } from "lucide-react";
 import heroImage from "@/assets/coffee-hero.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -50,20 +51,24 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-medium shadow-medium"
-            >
-              Explore Our Coffee
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg font-medium"
-            >
-              Learn Our Story
-            </Button>
+            <Link href="/products">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-medium shadow-medium"
+              >
+                Explore Our Coffee
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg font-medium"
+              >
+                Learn Our Story
+              </Button>
+            </Link>
           </div>
 
           {/* Stats */}
