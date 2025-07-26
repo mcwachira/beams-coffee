@@ -14,7 +14,7 @@ export const useProducts = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const data = await client.fetch(queries.products);
+        const data = await client.fetch(queries.products());
         setProducts(data);
       } catch (err) {
         setError(
