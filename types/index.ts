@@ -102,23 +102,44 @@ export interface Product {
   _id: string;
   _type: "product";
   name: string;
-  slug: Slug;
+  slug: {
+    _type: "slug";
+    current: string;
+  };
   image: SanityImage;
   images: SanityImage[];
   description?: string;
-  price?: number;
+  price: number;
   category?: {
-    _type: "reference";
-    _ref: string;
+    _id: string;
+    name: string;
+    slug: {
+      current: string;
+    };
   };
   stock?: number;
+  inStock?: boolean;
   roastLevel?: "Light" | "Medium" | "Dark";
   origin?: string;
   featured?: boolean;
+  tags?: string[];
+  specifications?: Specification[];
+
   seo?: {
-    title?: string;
-    description?: string;
+    metaTitle?: string;
+    metaDescription?: string;
+    metaImage?: SanityImage;
+    openGraph?: {
+      ogTitle?: string;
+      ogDescription?: string;
+      ogImage?: SanityImage;
+    };
   };
+}
+
+export interface Specification {
+  label: string;
+  value: string;
 }
 
 // ✅ Cart
