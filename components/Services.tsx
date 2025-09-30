@@ -94,7 +94,7 @@ const Services = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-coffee-green mb-2">
-                30+
+                1+
               </div>
               <div className="text-lg font-medium text-primary mb-2">
                 Years of Experience

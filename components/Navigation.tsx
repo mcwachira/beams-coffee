@@ -13,7 +13,7 @@ import { useCart } from "@/contexts/CartContext";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/products", label: "Products" },
+  // { href: "/products", label: "Products" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
@@ -57,25 +57,25 @@ const Navigation = () => {
               </Link>
             ))}
 
-            <Link href="/cart">
-              <div className="relative inline-block">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="relative px-3 dark:border-white/20 border-gray-300"
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                  {itemCount > 0 && (
-                    <span
-                      className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-green-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white dark:ring-gray-900 shadow-sm"
-                      aria-label={`${itemCount} items in cart`}
-                    >
-                      {itemCount}
-                    </span>
-                  )}
-                </Button>
-              </div>
-            </Link>
+            {/*<Link href="/cart">*/}
+            {/*  <div className="relative inline-block">*/}
+            {/*    <Button*/}
+            {/*      variant="outline"*/}
+            {/*      size="sm"*/}
+            {/*      className="relative px-3 dark:border-white/20 border-gray-300"*/}
+            {/*    >*/}
+            {/*      <ShoppingCart className="h-4 w-4" />*/}
+            {/*      {itemCount > 0 && (*/}
+            {/*        <span*/}
+            {/*          className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-green-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white dark:ring-gray-900 shadow-sm"*/}
+            {/*          aria-label={`${itemCount} items in cart`}*/}
+            {/*        >*/}
+            {/*          {itemCount}*/}
+            {/*        </span>*/}
+            {/*      )}*/}
+            {/*    </Button>*/}
+            {/*  </div>*/}
+            {/*</Link>*/}
 
             <Button
               variant="ghost"
@@ -133,22 +133,22 @@ const Navigation = () => {
                 </Link>
               ))}
 
-              <Link href="/cart" onClick={() => setIsOpen(false)}>
-                <Button
-                  variant="outline"
-                  className="w-full bg-red-600 relative mt-2 flex items-center justify-center"
-                >
-                  <ShoppingCart className="h-4 w-4 mr-2" />
-                  Cart
-                  {itemCount > 0 && (
-                    <span className="absolute -top-1 -right-1">
-                      <Badge className="bg-red-600 text-white rounded-full text-xs px-2 py-0.5 shadow">
-                        {itemCount}
-                      </Badge>
-                    </span>
-                  )}
-                </Button>
-              </Link>
+              {/*<Link href="/cart" onClick={() => setIsOpen(false)}>*/}
+              {/*  <Button*/}
+              {/*    variant="outline"*/}
+              {/*    className="w-full bg-red-600 relative mt-2 flex items-center justify-center"*/}
+              {/*  >*/}
+              {/*    <ShoppingCart className="h-4 w-4 mr-2" />*/}
+              {/*    Cart*/}
+              {/*    {itemCount > 0 && (*/}
+              {/*      <span className="absolute -top-1 -right-1">*/}
+              {/*        <Badge className="bg-red-600 text-white rounded-full text-xs px-2 py-0.5 shadow">*/}
+              {/*          {itemCount}*/}
+              {/*        </Badge>*/}
+              {/*      </span>*/}
+              {/*    )}*/}
+              {/*  </Button>*/}
+              {/*</Link>*/}
             </div>
           </motion.div>
         )}
